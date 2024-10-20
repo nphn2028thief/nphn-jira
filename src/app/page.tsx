@@ -1,7 +1,7 @@
 "use client";
 
-import AuthModal from "@/components/Modals/Auth";
 import { Button } from "@/components/ui/button";
+import AuthModal from "@/components/Modals/Auth";
 
 export default function Home() {
   return (

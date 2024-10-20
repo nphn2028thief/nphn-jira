@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useLayoutEffect } from "react";
+import { useContext, useLayoutEffect } from "react";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -13,6 +13,7 @@ import FormInput from "@/components/HookForms/Input";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { SIGN_UP_MODAL } from "@/constants/modal";
+import { LoadingContext } from "@/context/LoadingContext";
 import useModalStore from "@/hooks/useModal";
 import { ISignInInfo } from "@/types/auth";
 
@@ -25,6 +26,8 @@ const schema = Yup.object({
 });
 
 function SignInModal() {
+  const { setIsLoading } = useContext(LoadingContext);
+
   const {
     register,
     formState: { errors },
@@ -51,8 +54,12 @@ function SignInModal() {
   }, [errors]);
 
   const onSubmit = (data: ISignInInfo) => {
-    setClose(true);
-    console.log(data);
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      setClose(true);
+      console.log(data);
+    }, 2000);
   };
 
   return (
