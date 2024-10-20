@@ -20,7 +20,7 @@ function AuthModal() {
       <RenderIf condition={visible}>
         <div
           className={clsx(
-            `fixed inset-0 bg-black/25 z-10 ${styles.overlay} ${
+            `fixed inset-0 bg-black/25 z-[9995] ${styles.overlay} ${
               isClose && styles["overlay-close"]
             }`
           )}
